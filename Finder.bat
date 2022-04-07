@@ -2,24 +2,17 @@
 set /a check = 0
 title Cape Finder by ShadowOcto
 :Loading
-echo Checking for updates (%check%)
+echo Checking for updates.
+curl https://shadowocto.github.io/CapeFinder/Finder.bat >> Update.bat
+cls
+echo Checking for updates..
 timeout /t 1 >nul
+fc /b Finder.bat Update.bat > nul
+if errorlevel 1 (echo different && pause>nul) else (echo same && pause>nul)
 cls
-echo Checking for updates. (%check%)
-timeout /t 1 >nul
+echo Checking for updates...
 cls
-echo Checking for updates.. (%check%)
-timeout /t 1 >nul
-cls
-echo Checking for updates... (%check%)
-timeout /t 1 >nul
-cls
-::"lss" in batch means "lesser than" aka "<"
-set /a check = %check% + 1
-if %check% lss 4 (
-	goto loading
-)
-cls
+
 echo Test (#1)
 pause>nul
 
